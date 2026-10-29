@@ -1,0 +1,39 @@
++---------------------------------------------------------------------------------------+
+| 1. SOURCE                                                                             |
+| Public E-Commerce Sales Transaction CSV (Sourced via GitHub and Kaggle)               |
++---------------------------------------------------------------------------------------+
+                                           |
+                                           v
++---------------------------------------------------------------------------------------+
+| 2. INGEST                                                                             |
+| Local Download & API/Manual Upload to Google Cloud Storage (GCS)                      |
+| Path: gs://sales-dh/raw data/sales_transaction.csv                                    |
++---------------------------------------------------------------------------------------+
+                                           |
+                                           v
++---------------------------------------------------------------------------------------+
+| 3. VALIDATE                                                                           |
+| Schema Audits & Data Type Checks (Inspecting missing customer data, negative          |
+| quantities/refunds, and price distributions)                                          |
++---------------------------------------------------------------------------------------+
+                                           |
+                                           v
++---------------------------------------------------------------------------------------+
+| 4. STORE                                                                              |
+| Relational Storage in BigQuery Table:                                                 |
+| my-project-data-handling.sales_transaction_dataset.sales_transaction (431,706 rows)    |
++---------------------------------------------------------------------------------------+
+                                           |
+                                           v
++---------------------------------------------------------------------------------------+
+| 5. TRANSFORM                                                                          |
+| Data Partitioning & Feature Engineering: Stratified train/dev/test split by country   |
+| and generation of an 8-fold stratified cross-validation setup                         |
++---------------------------------------------------------------------------------------+
+                                           |
+                                           v
++---------------------------------------------------------------------------------------+
+| 6. OUTPUT                                                                             |
+| Model-Ready Export: Sharded CSV files stored in GCS (gs://sales-dh/sharded/)          |
+| and fully queryable analytical tables in BigQuery                                     |
++---------------------------------------------------------------------------------------+
